@@ -1,15 +1,12 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Navbar from '../components/Navbar';
-import TextSide from '../components/TextSide';
+import DefaultLayout from '../components/DefaultLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
-      <Navbar />
-      <TextSide />
+    <DefaultLayout>
       <Component {...pageProps} />
-    </>
+    </DefaultLayout>
   );
 }
 
