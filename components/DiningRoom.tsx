@@ -1,9 +1,20 @@
 import Image from 'next/image';
-import livingRoom from '../public/images/living-room.jpg';
+import diningRoom from '../public/images/dining-room.jpg';
+import { useContext, useEffect, useRef } from 'react';
+import { SectionOnScreen, SectionOnScreenContext } from '../providers/SectionOnScreenProvider';
+import useOnScreen from '../hooks/useOnScreen';
 
-const LivingRoom = () => {
+const DiningRoom = () => {
+  const { setSectionOnScreen } = useContext(SectionOnScreenContext);
+  const ref = useRef<HTMLTableSectionElement | null>(null);
+  const isVisible = useOnScreen(ref, '0px', 0.51);
+
+  useEffect(() => {
+    isVisible && setSectionOnScreen(SectionOnScreen.diningRoom);
+  }, [isVisible, setSectionOnScreen]);
+
   return (
-    <div id="dining-room" className="relative w-full h-screen">
+    <section ref={ref} id="dining-room" className="relative w-full h-screen">
       <div className="absolute h-full top-0 left-0 z-[1] w-1/3 bg-transparent">
         <div className="relative h-screen">
           <p className="absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
@@ -19,9 +30,9 @@ const LivingRoom = () => {
           </div>
         </div>
       </div>
-      <Image className="-scale-x-100" src={livingRoom} layout="fill" objectFit="cover" alt="dining room" priority />
-    </div>
+      <Image className="-scale-x-100" src={diningRoom} layout="fill" objectFit="cover" alt="dining room" priority />
+    </section>
   );
 };
 
-export default LivingRoom;
+export default DiningRoom;
