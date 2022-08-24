@@ -14,7 +14,7 @@ const LivingRoom = () => {
   }, [isVisible, setSectionOnScreen]);
 
   return (
-    <section ref={ref} id="living-room" className="relative w-full h-screen">
+    <section ref={ref} id="living-room" className="relative w-full h-full snap-center">
       <div className="absolute h-full top-0 left-0 z-[1] w-1/3 bg-transparent">
         <div className="relative h-screen">
           <p className="absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
