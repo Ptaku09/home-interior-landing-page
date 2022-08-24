@@ -24,8 +24,8 @@ const LivingRoom = () => {
             <p className="text-yellow-600 font-oswald font-semibold">LIVING ROOM</p>
             <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">Design</h1>
             <p className="w-80 pt-3 text-gray-300 font-poppins font-thin">
-              Light walls and yellow furniture match very well. Green plant adds some contrast and nature to room. Accessories such as sculpture or
-              clock breaks the monotony.
+              Light walls and yellow furniture match very well. Green plant adds some <span className="text-yellow-600 font-semibold"> contrast</span>{' '}
+              and nature to room. Accessories such as sculpture or clock <span className="text-yellow-600 font-semibold"> breaks the monotony</span>.
             </p>
           </div>
         </div>
