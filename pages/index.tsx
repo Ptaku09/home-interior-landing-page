@@ -15,6 +15,7 @@ const Home: NextPage = () => {
 
     sections.forEach((section: HTMLTableSectionElement) => {
       const curtain = section.querySelector('.curtain');
+      const text = section.querySelector('.text');
 
       const timelineShow = gsap.timeline({
         scrollTrigger: {
@@ -41,11 +42,24 @@ const Home: NextPage = () => {
 
       timelineHide.set(curtain, { x: '-100%' });
       timelineHide.to(curtain, { x: 0, duration: 1 });
+
+      // add parallax effect to text
+      gsap.to(text, {
+        yPercent: -100,
+        ease: 'none',
+        scrollTrigger: {
+          scroller: '#app-container',
+          start: 'top top',
+          end: 'bottom top',
+          trigger: section,
+          scrub: true,
+        },
+      });
     });
   }, []);
 
   return (
-    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll scroll-smooth snap-mandatory snap-y">
+    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll scroll-smooth snap-y">
       <LivingRoom />
       <DiningRoom />
     </div>

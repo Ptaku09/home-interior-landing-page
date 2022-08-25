@@ -21,13 +21,16 @@ const LivingRoom = () => {
           <p className="absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
             01
           </p>
-          <div className="h-full w-auto absolute top-1/2 -translate-y-1/2 -right-14 flex justify-center flex-col gap-3">
-            <p className="text text-yellow-600 font-oswald font-semibold">LIVING ROOM</p>
-            <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">Design</h1>
-            <p className="w-80 pt-3 text-gray-300 font-poppins font-thin">
-              Light walls and yellow furniture match very well. Green plant adds some <span className="text-yellow-600 font-semibold"> contrast</span>{' '}
-              and nature to room. Accessories such as sculpture or clock <span className="text-yellow-600 font-semibold"> breaks the monotony</span>.
-            </p>
+          <div className="h-full w-auto absolute top-1/2 -translate-y-1/2 -right-14 flex justify-center flex-col">
+            <div className="text flex justify-center flex-col gap-3">
+              <p className="text-yellow-600 font-oswald font-semibold">LIVING ROOM</p>
+              <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">Design</h1>
+              <p className="w-80 pt-3 text-gray-300 font-poppins font-thin">
+                Light walls and yellow furniture match very well. Green plant adds some{' '}
+                <span className="text-yellow-600 font-semibold"> contrast</span> and nature to room. Accessories such as sculpture or clock{' '}
+                <span className="text-yellow-600 font-semibold"> breaks the monotony</span>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
