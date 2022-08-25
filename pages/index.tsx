@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     sections.forEach((section: HTMLTableSectionElement) => {
       const curtain = section.querySelector('.curtain');
       const text = section.querySelector('.text');
+      const number = section.querySelector('.number');
 
       const timelineShow = gsap.timeline({
         scrollTrigger: {
@@ -47,20 +48,50 @@ const Home: NextPage = () => {
       gsap.to(text, {
         yPercent: -100,
         ease: 'none',
+        filter: 'blur(10px)',
         scrollTrigger: {
           scroller: '#app-container',
+          trigger: section,
           start: 'top top',
           end: 'bottom top',
-          trigger: section,
           scrub: true,
         },
       });
+
+      // add appear animation to number
+      const tlNumberShow = gsap.timeline({
+        scrollTrigger: {
+          scroller: '#app-container',
+          trigger: section,
+          start: '30% center',
+          end: 'center center',
+          scrub: 3,
+        },
+      });
+
+      gsap.set(number, { opacity: 0 });
+      tlNumberShow.to(number, { opacity: 1 });
+
+      const tlNumberHide = gsap.timeline({
+        scrollTrigger: {
+          scroller: '#app-container',
+          trigger: section,
+          start: 'center center',
+          end: '70% center',
+          scrub: 2,
+        },
+      });
+
+      tlNumberHide.set(number, { opacity: 1 });
+      tlNumberHide.to(number, { opacity: 0 });
     });
   }, []);
 
   return (
-    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll scroll-smooth snap-y">
+    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll scroll-smooth snap-mandatory snap-y">
       <LivingRoom />
+      <DiningRoom />
+      <DiningRoom />
       <DiningRoom />
     </div>
   );
