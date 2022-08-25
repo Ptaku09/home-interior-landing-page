@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import diningRoom from '../public/images/dr2.jpg';
+import diningRoom from '../public/images/dining-room.jpg';
 import { useContext, useEffect, useRef } from 'react';
 import { SectionOnScreen, SectionOnScreenContext } from '../providers/SectionOnScreenProvider';
 import useOnScreen from '../hooks/useOnScreen';
+import PhotoCurtain from './PhotoCurtain';
 
 const DiningRoom = () => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
@@ -14,8 +15,8 @@ const DiningRoom = () => {
   }, [isVisible, setSectionOnScreen]);
 
   return (
-    <section ref={ref} id="dining-room" className="relative w-full h-full snap-center">
-      <div className="absolute h-full top-0 left-0 z-[1] w-1/3 bg-transparent">
+    <section ref={ref} id="dining-room" className="section relative w-full h-full snap-center">
+      <div className="absolute h-full top-0 left-0 z-[2] w-1/3 bg-transparent">
         <div className="relative h-screen">
           <p className="absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
             02
@@ -30,6 +31,7 @@ const DiningRoom = () => {
           </div>
         </div>
       </div>
+      <PhotoCurtain />
       <Image className="-scale-x-100" src={diningRoom} layout="fill" objectFit="cover" alt="dining room" priority />
     </section>
   );
