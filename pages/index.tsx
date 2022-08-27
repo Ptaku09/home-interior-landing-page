@@ -3,13 +3,45 @@ import LivingRoom from '../components/LivingRoom';
 import DiningRoom from '../components/DiningRoom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useEffect, useRef } from 'react';
+import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
+import React, { useLayoutEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 const Home: NextPage = () => {
   const ref = useRef<HTMLDivElement | null>(null);
-  gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
+  // handle scroll to section
+  useLayoutEffect(() => {
+    const pointer = gsap.utils.selector(ref);
+    const sections: HTMLTableSectionElement[] = gsap.utils.toArray(pointer('.section'));
+
+    const goToSection = (i: number) => {
+      gsap.to('#app-container', {
+        scrollTo: { y: i * innerHeight, autoKill: false },
+        duration: 0.75,
+      });
+    };
+
+    sections.forEach((section: any, i: number) => {
+      ScrollTrigger.create({
+        scroller: '#app-container',
+        trigger: section,
+        onEnter: () => goToSection(i),
+      });
+
+      ScrollTrigger.create({
+        scroller: '#app-container',
+        trigger: section,
+        start: 'bottom bottom',
+        onEnterBack: () => goToSection(i),
+      });
+    });
+  }, []);
+
+  // handle other animations
+  useLayoutEffect(() => {
     const pointer = gsap.utils.selector(ref);
     const sections: HTMLTableSectionElement[] = gsap.utils.toArray(pointer('.section'));
 
@@ -18,20 +50,20 @@ const Home: NextPage = () => {
       const text = section.querySelector('.text');
       const number = section.querySelector('.number');
 
-      const timelineShow = gsap.timeline({
+      const timelineCurtainTop = gsap.timeline({
         scrollTrigger: {
           scroller: '#app-container',
           trigger: section,
           start: '10% center',
           end: 'center-=100 center',
-          scrub: 0.5,
+          scrub: 1,
         },
       });
 
-      timelineShow.set(curtain, { x: 0 });
-      timelineShow.to(curtain, { x: '-100%', duration: 1 });
+      timelineCurtainTop.set(curtain, { x: 0 });
+      timelineCurtainTop.to(curtain, { x: '-100%' });
 
-      const timelineHide = gsap.timeline({
+      const timelineCurtainBottom = gsap.timeline({
         scrollTrigger: {
           scroller: '#app-container',
           trigger: section,
@@ -41,8 +73,8 @@ const Home: NextPage = () => {
         },
       });
 
-      timelineHide.set(curtain, { x: '-100%' });
-      timelineHide.to(curtain, { x: 0, duration: 1 });
+      timelineCurtainBottom.set(curtain, { x: '-100%' });
+      timelineCurtainBottom.to(curtain, { x: 0 });
 
       // add parallax effect to text
       gsap.to(text, {
@@ -88,10 +120,8 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll scroll-smooth snap-mandatory snap-y">
+    <div ref={ref} id="app-container" className="h-screen overflow-y-scroll">
       <LivingRoom />
-      <DiningRoom />
-      <DiningRoom />
       <DiningRoom />
     </div>
   );
