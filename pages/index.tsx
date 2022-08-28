@@ -4,27 +4,37 @@ import DiningRoom from '../components/DiningRoom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import Navbar from '../components/Navbar';
+import { throttle } from 'lodash';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const Home: NextPage = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   // handle scroll to section
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const pointer = gsap.utils.selector(ref);
     const sections: HTMLTableSectionElement[] = gsap.utils.toArray(pointer('.section'));
+    const navButtons: HTMLButtonElement[] = gsap.utils.toArray(pointer('.nav-button'));
 
-    const goToSection = (i: number) => {
+    const goToSection = throttle((i: number) => {
+      gsap.set('#app-container', { overflow: 'hidden' });
+
       gsap.to('#app-container', {
         scrollTo: { y: i * innerHeight, autoKill: false },
         duration: 0.75,
+        onComplete: () => {
+          gsap.set('#app-container', { overflow: 'auto' });
+        },
       });
-    };
+    }, 750);
 
-    sections.forEach((section: any, i: number) => {
+    sections.forEach((section: HTMLTableSectionElement, i: number) => {
       ScrollTrigger.create({
         scroller: '#app-container',
         trigger: section,
@@ -38,10 +48,23 @@ const Home: NextPage = () => {
         onEnterBack: () => goToSection(i),
       });
     });
+
+    // connect navbar with scrollToPlugin
+    navButtons.forEach((button: HTMLButtonElement, i: number) => {
+      button.addEventListener('click', (e: MouseEvent) => {
+        e.preventDefault();
+        goToSection(i);
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((instance) => instance.kill());
+      gsap.killTweensOf('#app-container');
+    };
   }, []);
 
   // handle other animations
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const pointer = gsap.utils.selector(ref);
     const sections: HTMLTableSectionElement[] = gsap.utils.toArray(pointer('.section'));
 
@@ -117,11 +140,20 @@ const Home: NextPage = () => {
       tlNumberHide.set(number, { opacity: 1 });
       tlNumberHide.to(number, { opacity: 0 });
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((instance) => instance.kill());
+      gsap.killTweensOf('#app-container');
+    };
   }, []);
 
   return (
     <div ref={ref} id="app-container" className="h-screen overflow-y-scroll">
+      <Navbar />
       <LivingRoom />
+      <DiningRoom />
+      <DiningRoom />
+      <DiningRoom />
       <DiningRoom />
     </div>
   );

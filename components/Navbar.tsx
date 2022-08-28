@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import githubWhite from '../public/icons/github-white.svg';
-import Link from 'next/link';
 import { SectionOnScreen, SectionOnScreenContext } from '../providers/SectionOnScreenProvider';
 import { useContext } from 'react';
 
@@ -12,33 +11,24 @@ const Navbar = () => {
       <div className="flex items-center justify-center">
         <p className="font-semibold text-xl">Find your style</p>
       </div>
-      <div className="flex items-center justify-center">
-        <form className="flex flex-row gap-5">
-          {Object.values(SectionOnScreen).map((item: string, index: number) => (
-            <div key={item}>
-              <Link href={`#${item.replace(' ', '-').toLowerCase()}`}>
-                <a>
-                  <input type="radio" name="room" id={`room-${index}`} className="peer hidden" />
-                  {sectionOnScreen === item ? (
-                    <label
-                      htmlFor={`room-${index}`}
-                      className="py-5 px-6 rounded-full transition-all duration-500 bg-gradient-to-tl from-zinc-700 via-zinc-800 to-zinc-800 cursor-pointer bg-size-200 bg-pos-100"
-                    >
-                      {item}
-                    </label>
-                  ) : (
-                    <label
-                      htmlFor={`room-${index}`}
-                      className="py-5 px-6 rounded-full transition-all duration-500 bg-gradient-to-tl from-zinc-700 via-zinc-800 to-zinc-800 cursor-pointer bg-size-200 bg-pos-0 peer-checked:bg-pos-100 hover:bg-pos-100"
-                    >
-                      {item}
-                    </label>
-                  )}
-                </a>
-              </Link>
-            </div>
+      <div className="flex items-center justify-center flex-row gap-5">
+        <ul className="flex flex-row gap-5">
+          {Object.values(SectionOnScreen).map((item: string) => (
+            <li key={item}>
+              <button className="nav-button">
+                {sectionOnScreen === item ? (
+                  <p className="py-5 px-6 rounded-full transition-all duration-500 bg-gradient-to-tl from-zinc-700 via-zinc-800 to-zinc-800 cursor-pointer bg-size-200 bg-pos-100">
+                    {item}
+                  </p>
+                ) : (
+                  <p className="py-5 px-6 rounded-full transition-all duration-500 bg-gradient-to-tl from-zinc-700 via-zinc-800 to-zinc-800 cursor-pointer bg-size-200 bg-pos-0 hover:bg-pos-100">
+                    {item}
+                  </p>
+                )}
+              </button>
+            </li>
           ))}
-        </form>
+        </ul>
       </div>
       <div className="flex items-center justify-center">
         <a
