@@ -7,16 +7,16 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
-export enum RoomNameColor {
-  yellow = 'text-yellow-600',
-  green = 'text-emerald-600',
+export enum SectionMainColor {
+  yellow = 'yellow-600',
+  green = 'emerald-600',
 }
 
 type Props = {
   id: string;
   number: string;
   sectionName: SectionOnScreen;
-  color: RoomNameColor;
+  color: SectionMainColor;
   title: string;
   imageUrl: string;
   children: ReactNode;
@@ -27,8 +27,6 @@ const RoomSection = ({ id, number, sectionName, color, title, imageUrl, children
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
   const gsapPointer = gsap.utils.selector(ref);
-  const timelineCurtainTop = useRef<gsap.core.Timeline | null>(null);
-  const timelineCurtainBottom = useRef<gsap.core.Timeline | null>(null);
   const timelineNumberTop = useRef<gsap.core.Timeline | null>(null);
   const timelineNumberBottom = useRef<gsap.core.Timeline | null>(null);
 
@@ -37,37 +35,10 @@ const RoomSection = ({ id, number, sectionName, color, title, imageUrl, children
   }, [isVisible, number, setSectionOnScreen]);
 
   useIsomorphicLayoutEffect(() => {
-    const curtain = gsapPointer('.curtain');
     const text = gsapPointer('.text');
     const number = gsapPointer('.number');
 
-    timelineCurtainTop.current = gsap.timeline({
-      scrollTrigger: {
-        scroller: '#app-container',
-        trigger: ref.current,
-        start: '10% center',
-        end: 'center-=100 center',
-        scrub: 1,
-      },
-    });
-
-    timelineCurtainTop.current.set(curtain, { x: 0 });
-    timelineCurtainTop.current.to(curtain, { x: '-100%' });
-
-    timelineCurtainBottom.current = gsap.timeline({
-      scrollTrigger: {
-        scroller: '#app-container',
-        trigger: ref.current,
-        start: 'center+=100 center',
-        end: '90% center',
-        scrub: 0.5,
-      },
-    });
-
-    timelineCurtainBottom.current.set(curtain, { x: '-100%' });
-    timelineCurtainBottom.current.to(curtain, { x: 0 });
-
-    // add appear animation to number
+    // add fade-in animation to number
     timelineNumberTop.current = gsap.timeline({
       scrollTrigger: {
         scroller: '#app-container',
@@ -123,7 +94,7 @@ const RoomSection = ({ id, number, sectionName, color, title, imageUrl, children
           </p>
           <div className="h-full w-auto absolute top-1/2 -translate-y-1/2 -right-14 flex justify-center flex-col">
             <div className="text flex justify-center flex-col gap-3">
-              <h4 className={`${color} font-oswald font-semibold`}>{sectionName.toUpperCase()}</h4>
+              <h4 className={`text-${color} font-oswald font-semibold`}>{sectionName.toUpperCase()}</h4>
               <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">{title}</h1>
               <p className="w-80 pt-3 text-gray-300 font-poppins font-thin">{children}</p>
             </div>
