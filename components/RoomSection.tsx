@@ -7,22 +7,28 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
-export enum SectionMainColor {
-  yellow = 'yellow-600',
-  green = 'emerald-600',
+export enum SectionHighlightedTextColor {
+  yellow = 'text-yellow-600',
+  green = 'text-emerald-600',
+}
+
+export enum SectionPinsColor {
+  yellow = 'bg-yellow-600',
+  green = 'bg-emerald-600',
 }
 
 type Props = {
   id: string;
   number: string;
   sectionName: SectionOnScreen;
-  color: SectionMainColor;
+  highlightedTextColor: SectionHighlightedTextColor;
+  pinsColor: SectionPinsColor;
   title: string;
   imageUrl: string;
   children: ReactNode;
 };
 
-const RoomSection = ({ id, number, sectionName, color, title, imageUrl, children }: Props) => {
+const RoomSection = ({ id, number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, children }: Props) => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
@@ -94,7 +100,7 @@ const RoomSection = ({ id, number, sectionName, color, title, imageUrl, children
           </p>
           <div className="h-full w-auto absolute top-1/2 -translate-y-1/2 -right-14 flex justify-center flex-col">
             <div className="text flex justify-center flex-col gap-3">
-              <h4 className={`text-${color} font-oswald font-semibold`}>{sectionName.toUpperCase()}</h4>
+              <h4 className={`${highlightedTextColor} font-oswald font-semibold`}>{sectionName.toUpperCase()}</h4>
               <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">{title}</h1>
               <p className="w-80 pt-3 text-gray-300 font-poppins font-thin">{children}</p>
             </div>

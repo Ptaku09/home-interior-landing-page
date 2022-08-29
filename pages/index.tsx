@@ -5,7 +5,7 @@ import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import React, { useRef } from 'react';
 import Navbar from '../components/Navbar';
 import { throttle } from 'lodash';
-import RoomSection, { SectionMainColor } from '../components/RoomSection';
+import RoomSection, { SectionHighlightedTextColor, SectionPinsColor } from '../components/RoomSection';
 import { SectionOnScreen } from '../providers/SectionOnScreenProvider';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 
@@ -69,27 +69,29 @@ const Home: NextPage = () => {
         id="living-room"
         number="01"
         sectionName={SectionOnScreen.livingRoom}
-        color={SectionMainColor.yellow}
+        highlightedTextColor={SectionHighlightedTextColor.yellow}
+        pinsColor={SectionPinsColor.yellow}
         title="Design"
         imageUrl="/images/living-room.jpg"
       >
         <>
           Light walls and yellow furniture match very well. Green plant adds some{' '}
-          <span className={`text-${SectionMainColor.yellow} font-semibold`}> contrast</span> and nature to room. Accessories such as sculpture or
-          clock <span className={`text-${SectionMainColor.yellow} font-semibold`}> breaks the monotony</span>.
+          <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}> contrast</span> and nature to room. Accessories such as sculpture
+          or clock <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}> breaks the monotony</span>.
         </>
       </RoomSection>
       <RoomSection
         id="dining-room"
         number="02"
         sectionName={SectionOnScreen.diningRoom}
-        color={SectionMainColor.green}
+        highlightedTextColor={SectionHighlightedTextColor.green}
+        pinsColor={SectionPinsColor.green}
         title="Stylish"
         imageUrl="/images/dining-room.jpg"
       >
         <>
           Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more
-          <span className={`text-${SectionMainColor.green} font-semibold`}> comfortable and cosy</span>.
+          <span className={`${SectionHighlightedTextColor.green} font-semibold`}> comfortable and cosy</span>.
         </>
       </RoomSection>
     </div>
