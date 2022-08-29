@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import LivingRoom from '../components/LivingRoom';
-import DiningRoom from '../components/DiningRoom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import { throttle } from 'lodash';
+import RoomSection, { RoomNameColor } from '../components/RoomSection';
+import { SectionOnScreen } from '../providers/SectionOnScreenProvider';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -150,11 +150,33 @@ const Home: NextPage = () => {
   return (
     <div ref={ref} id="app-container" className="h-screen overflow-y-scroll">
       <Navbar />
-      <LivingRoom />
-      <DiningRoom />
-      <DiningRoom />
-      <DiningRoom />
-      <DiningRoom />
+      <RoomSection
+        id="living-room"
+        number="01"
+        sectionName={SectionOnScreen.livingRoom}
+        color={RoomNameColor.yellow}
+        title="Design"
+        imageUrl="/images/living-room.jpg"
+      >
+        <>
+          Light walls and yellow furniture match very well. Green plant adds some{' '}
+          <span className={`${RoomNameColor.yellow} font-semibold`}> contrast</span> and nature to room. Accessories such as sculpture or clock{' '}
+          <span className={`${RoomNameColor.yellow} font-semibold`}> breaks the monotony</span>.
+        </>
+      </RoomSection>
+      <RoomSection
+        id="dining-room"
+        number="02"
+        sectionName={SectionOnScreen.diningRoom}
+        color={RoomNameColor.green}
+        title="Stylish"
+        imageUrl="/images/dining-room.jpg"
+      >
+        <>
+          Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more
+          <span className={`${RoomNameColor.green} font-semibold`}> comfortable and cosy</span>.
+        </>
+      </RoomSection>
     </div>
   );
 };
