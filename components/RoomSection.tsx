@@ -10,15 +10,16 @@ import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 export enum SectionHighlightedTextColor {
   yellow = 'text-yellow-600',
   green = 'text-emerald-600',
+  gray = 'text-stone-300',
 }
 
 export enum SectionPinsColor {
   yellow = 'bg-yellow-600',
   green = 'bg-emerald-600',
+  gray = 'bg-stone-300',
 }
 
 type Props = {
-  id: string;
   number: string;
   sectionName: SectionOnScreen;
   highlightedTextColor: SectionHighlightedTextColor;
@@ -28,7 +29,7 @@ type Props = {
   children: ReactNode;
 };
 
-const RoomSection = ({ id, number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, children }: Props) => {
+const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, children }: Props) => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
@@ -92,7 +93,7 @@ const RoomSection = ({ id, number, sectionName, highlightedTextColor, pinsColor,
   }, []);
 
   return (
-    <section ref={ref} id={id} className="section relative w-full h-full">
+    <section ref={ref} className="section relative w-full h-full">
       <div className="absolute h-full top-0 left-0 z-[2] w-1/3 bg-transparent">
         <div className="relative h-screen">
           <p className="number absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">

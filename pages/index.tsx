@@ -14,12 +14,12 @@ gsap.registerPlugin(ScrollToPlugin);
 
 const Home: NextPage = () => {
   const ref = useRef<HTMLDivElement | null>(null);
+  const gsapPointer = gsap.utils.selector(ref);
 
   // handle scroll to section
   useIsomorphicLayoutEffect(() => {
-    const pointer = gsap.utils.selector(ref);
-    const sections: HTMLTableSectionElement[] = gsap.utils.toArray(pointer('.section'));
-    const navButtons: HTMLButtonElement[] = gsap.utils.toArray(pointer('.nav-button'));
+    const sections: HTMLTableSectionElement[] = gsap.utils.toArray(gsapPointer('.section'));
+    const navButtons: HTMLButtonElement[] = gsap.utils.toArray(gsapPointer('.nav-button'));
 
     const goToSection = throttle((i: number) => {
       gsap.set('#app-container', { overflow: 'hidden' });
@@ -66,7 +66,6 @@ const Home: NextPage = () => {
     <div ref={ref} id="app-container" className="h-screen overflow-y-scroll">
       <Navbar />
       <RoomSection
-        id="living-room"
         number="01"
         sectionName={SectionOnScreen.livingRoom}
         highlightedTextColor={SectionHighlightedTextColor.yellow}
@@ -76,12 +75,11 @@ const Home: NextPage = () => {
       >
         <>
           Light walls and yellow furniture match very well. Green plant adds some{' '}
-          <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}> contrast</span> and nature to room. Accessories such as sculpture
-          or clock <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}> breaks the monotony</span>.
+          <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}>contrast</span> and nature to room. Accessories such as sculpture or
+          clock <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}>breaks the monotony</span>.
         </>
       </RoomSection>
       <RoomSection
-        id="dining-room"
         number="02"
         sectionName={SectionOnScreen.diningRoom}
         highlightedTextColor={SectionHighlightedTextColor.green}
@@ -90,8 +88,22 @@ const Home: NextPage = () => {
         imageUrl="/images/dining-room.jpg"
       >
         <>
-          Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more
-          <span className={`${SectionHighlightedTextColor.green} font-semibold`}> comfortable and cosy</span>.
+          Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more{' '}
+          <span className={`${SectionHighlightedTextColor.green} font-semibold`}>comfortable and cosy</span>.
+        </>
+      </RoomSection>
+      <RoomSection
+        number="03"
+        sectionName={SectionOnScreen.kitchen}
+        highlightedTextColor={SectionHighlightedTextColor.gray}
+        pinsColor={SectionPinsColor.gray}
+        title="Modern"
+        imageUrl="/images/k2.jpg"
+      >
+        <>
+          Dark cabinets, table and chairs add <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>modernity</span> to the room. Huge
+          worktop next to the window is <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>very practical</span>. Fresh spices
+          hanging over the table give the place an table magical atmosphere.
         </>
       </RoomSection>
     </div>

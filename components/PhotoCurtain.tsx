@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 const PhotoCurtain = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -18,7 +19,7 @@ const PhotoCurtain = () => {
       },
     });
 
-    timelineCurtainTop.current.set(ref.current, { x: 0 });
+    gsap.set(ref.current, { x: 0 });
     timelineCurtainTop.current.to(ref.current, { x: '-100%' });
 
     timelineCurtainBottom.current = gsap.timeline({
@@ -33,6 +34,11 @@ const PhotoCurtain = () => {
 
     timelineCurtainBottom.current.set(ref.current, { x: '-100%' });
     timelineCurtainBottom.current.to(ref.current, { x: 0 });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((instance) => instance.kill());
+      gsap.killTweensOf('#app-container');
+    };
   }, []);
 
   return <div ref={ref} className="curtain absolute right-0 z-[1] w-2/3 h-full bg-zinc-500" />;
