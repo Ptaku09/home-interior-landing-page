@@ -121,6 +121,20 @@ const Home: NextPage = () => {
           due to large window that lets sunlight into the room.
         </>
       </RoomSection>
+      <RoomSection
+        number="05"
+        sectionName={SectionOnScreen.bathroom}
+        highlightedTextColor={SectionHighlightedTextColor.stone}
+        pinsColor={SectionPinsColor.stone}
+        title="Nature"
+        imageUrl="/images/bathroom.jpg"
+      >
+        <>
+          Bathroom is strictly <span className={`${SectionHighlightedTextColor.stone} font-semibold`}>connected with the nature</span>. Despite the
+          use of stone, the room does not look ascetic. Rain shower between real trees gives the impression of showering{' '}
+          <span className={`${SectionHighlightedTextColor.stone} font-semibold`}>in the wild</span>.
+        </>
+      </RoomSection>
     </div>
   );
 };
