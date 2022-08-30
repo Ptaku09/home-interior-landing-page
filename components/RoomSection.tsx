@@ -64,19 +64,6 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
     gsap.set(number, { autoAlpha: 0 });
     timelineNumberTop.current.to(number, { autoAlpha: 1 });
 
-    timelineNumberBottom.current = gsap.timeline({
-      scrollTrigger: {
-        scroller: '#app-container',
-        trigger: ref.current,
-        start: 'center center',
-        end: '70% center',
-        scrub: 2,
-      },
-    });
-
-    timelineNumberBottom.current.set(number, { autoAlpha: 1 });
-    timelineNumberBottom.current.to(number, { autoAlpha: 0 });
-
     // add parallax effect to text
     gsap.to(text, {
       yPercent: -100,
