@@ -72,6 +72,7 @@ const Home: NextPage = () => {
         pinsColor={SectionPinsColor.yellow}
         title="Design"
         imageUrl="/images/living-room.jpg"
+        blurImageUrl="/images/living-room-blur.jpg"
       >
         <>
           Light walls and yellow furniture match very well. Green plant adds some{' '}
@@ -86,6 +87,7 @@ const Home: NextPage = () => {
         pinsColor={SectionPinsColor.green}
         title="Stylish"
         imageUrl="/images/dining-room.jpg"
+        blurImageUrl="/images/dining-room-blur.jpg"
       >
         <>
           Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more{' '}
@@ -99,6 +101,7 @@ const Home: NextPage = () => {
         pinsColor={SectionPinsColor.gray}
         title="Modern"
         imageUrl="/images/kitchen.jpg"
+        blurImageUrl="/images/kitchen-blur.jpg"
       >
         <>
           Dark cabinets, table and chairs add <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>modernity</span> to the room. Huge
@@ -113,6 +116,7 @@ const Home: NextPage = () => {
         pinsColor={SectionPinsColor.beige}
         title="Homely"
         imageUrl="/images/bedroom.jpg"
+        blurImageUrl="/images/bedroom-blur.jpg"
       >
         <>
           The entire bedroom is in a beige shade which makes it seem{' '}
@@ -128,6 +132,7 @@ const Home: NextPage = () => {
         pinsColor={SectionPinsColor.stone}
         title="Nature"
         imageUrl="/images/bathroom.jpg"
+        blurImageUrl="/images/bathroom-blur.jpg"
       >
         <>
           Bathroom is strictly <span className={`${SectionHighlightedTextColor.stone} font-semibold`}>connected with the nature</span>. Despite the

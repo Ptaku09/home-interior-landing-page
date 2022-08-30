@@ -30,10 +30,11 @@ type Props = {
   pinsColor: SectionPinsColor;
   title: string;
   imageUrl: string;
+  blurImageUrl: string;
   children: ReactNode;
 };
 
-const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, children }: Props) => {
+const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, blurImageUrl, children }: Props) => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
@@ -60,8 +61,8 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
       },
     });
 
-    gsap.set(number, { opacity: 0 });
-    timelineNumberTop.current.to(number, { opacity: 1 });
+    gsap.set(number, { autoAlpha: 0 });
+    timelineNumberTop.current.to(number, { autoAlpha: 1 });
 
     timelineNumberBottom.current = gsap.timeline({
       scrollTrigger: {
@@ -73,8 +74,8 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
       },
     });
 
-    timelineNumberBottom.current.set(number, { opacity: 1 });
-    timelineNumberBottom.current.to(number, { opacity: 0 });
+    timelineNumberBottom.current.set(number, { autoAlpha: 1 });
+    timelineNumberBottom.current.to(number, { autoAlpha: 0 });
 
     // add parallax effect to text
     gsap.to(text, {
@@ -113,7 +114,16 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
         </div>
       </div>
       <PhotoCurtain />
-      <Image className="-scale-x-100" src={imageUrl} layout="fill" objectFit="cover" alt="dining room" priority />
+      <Image
+        className="-scale-x-100"
+        src={imageUrl}
+        layout="fill"
+        objectFit="cover"
+        alt="dining room"
+        blurDataURL={blurImageUrl}
+        placeholder="blur"
+        priority
+      />
     </section>
   );
 };
