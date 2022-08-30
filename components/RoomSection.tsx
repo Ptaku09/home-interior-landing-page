@@ -11,12 +11,14 @@ export enum SectionHighlightedTextColor {
   yellow = 'text-yellow-600',
   green = 'text-emerald-600',
   gray = 'text-stone-300',
+  beige = 'text-orange-200',
 }
 
 export enum SectionPinsColor {
   yellow = 'bg-yellow-600',
   green = 'bg-emerald-600',
   gray = 'bg-stone-300',
+  beige = 'text-orange-200',
 }
 
 type Props = {

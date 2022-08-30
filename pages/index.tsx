@@ -98,12 +98,27 @@ const Home: NextPage = () => {
         highlightedTextColor={SectionHighlightedTextColor.gray}
         pinsColor={SectionPinsColor.gray}
         title="Modern"
-        imageUrl="/images/k2.jpg"
+        imageUrl="/images/kitchen.jpg"
       >
         <>
           Dark cabinets, table and chairs add <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>modernity</span> to the room. Huge
           worktop next to the window is <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>very practical</span>. Fresh spices
           hanging over the table give the place an table magical atmosphere.
+        </>
+      </RoomSection>
+      <RoomSection
+        number="04"
+        sectionName={SectionOnScreen.bedroom}
+        highlightedTextColor={SectionHighlightedTextColor.beige}
+        pinsColor={SectionPinsColor.beige}
+        title="Homely"
+        imageUrl="/images/bedroom.jpg"
+      >
+        <>
+          The entire bedroom is in a beige shade which makes it seem{' '}
+          <span className={`${SectionHighlightedTextColor.beige} font-semibold`}>comfortable</span>.{' '}
+          <span className={`${SectionHighlightedTextColor.beige} font-semibold`}>King-size bed</span> guarantees great sleep and the whole thing is
+          due to large window that lets sunlight into the room.
         </>
       </RoomSection>
     </div>

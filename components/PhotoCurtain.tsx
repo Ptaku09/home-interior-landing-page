@@ -19,7 +19,7 @@ const PhotoCurtain = () => {
       },
     });
 
-    gsap.set(ref.current, { x: 0 });
+    timelineCurtainTop.current.set(ref.current, { x: 0 });
     timelineCurtainTop.current.to(ref.current, { x: '-100%' });
 
     timelineCurtainBottom.current = gsap.timeline({
