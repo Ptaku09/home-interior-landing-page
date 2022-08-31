@@ -1,9 +1,9 @@
 import { useRef } from 'react';
-import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
+import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-const PhotoCurtain = () => {
+const DesktopPhotoCurtain = () => {
   const ref = useRef<HTMLDivElement | null>(null);
   const timelineCurtainTop = useRef<gsap.core.Timeline | null>(null);
   const timelineCurtainBottom = useRef<gsap.core.Timeline | null>(null);
@@ -11,7 +11,7 @@ const PhotoCurtain = () => {
   useIsomorphicLayoutEffect(() => {
     timelineCurtainTop.current = gsap.timeline({
       scrollTrigger: {
-        scroller: '#app-container',
+        scroller: '#desktop-app-container',
         trigger: ref.current,
         start: '10% center',
         end: 'center-=100 center',
@@ -24,7 +24,7 @@ const PhotoCurtain = () => {
 
     timelineCurtainBottom.current = gsap.timeline({
       scrollTrigger: {
-        scroller: '#app-container',
+        scroller: '#desktop-app-container',
         trigger: ref.current,
         start: 'center+=100 center',
         end: '90% center',
@@ -37,11 +37,11 @@ const PhotoCurtain = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach((instance) => instance.kill());
-      gsap.killTweensOf('#app-container');
+      gsap.killTweensOf('#desktop-app-container');
     };
   }, []);
 
   return <div ref={ref} className="curtain absolute right-0 z-[1] w-2/3 h-full bg-zinc-500" />;
 };
 
-export default PhotoCurtain;
+export default DesktopPhotoCurtain;

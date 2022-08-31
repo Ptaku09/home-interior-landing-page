@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import githubWhite from '../public/icons/github-white.svg';
-import { SectionOnScreen, SectionOnScreenContext } from '../providers/SectionOnScreenProvider';
+import githubWhite from '../../public/icons/github-white.svg';
+import { SectionOnScreen, SectionOnScreenContext } from '../../providers/SectionOnScreenProvider';
 import { useContext } from 'react';
 
-const Navbar = () => {
+const DesktopNavbar = () => {
   const { sectionOnScreen } = useContext(SectionOnScreenContext);
 
   return (
@@ -45,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DesktopNavbar;

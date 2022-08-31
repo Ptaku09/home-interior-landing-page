@@ -1,11 +1,11 @@
-import PhotoCurtain from './PhotoCurtain';
+import DesktopPhotoCurtain from './DesktopPhotoCurtain';
 import Image from 'next/image';
 import { ReactNode, useContext, useEffect, useRef } from 'react';
-import { SectionOnScreen, SectionOnScreenContext } from '../providers/SectionOnScreenProvider';
-import useOnScreen from '../hooks/useOnScreen';
+import { SectionOnScreen, SectionOnScreenContext } from '../../providers/SectionOnScreenProvider';
+import useOnScreen from '../../hooks/useOnScreen';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import useIsomorphicLayoutEffect from '../hooks/useIsomorphicLayoutEffect';
+import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 
 export enum SectionHighlightedTextColor {
   yellow = 'text-yellow-600',
@@ -34,7 +34,7 @@ type Props = {
   children: ReactNode;
 };
 
-const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, blurImageUrl, children }: Props) => {
+const DesktopRoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, blurImageUrl, children }: Props) => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
@@ -53,7 +53,7 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
     // add fade-in animation to number
     timelineNumberTop.current = gsap.timeline({
       scrollTrigger: {
-        scroller: '#app-container',
+        scroller: '#desktop-app-container',
         trigger: ref.current,
         start: '30% center',
         end: 'center center',
@@ -70,7 +70,7 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
       ease: 'none',
       filter: 'blur(10px)',
       scrollTrigger: {
-        scroller: '#app-container',
+        scroller: '#desktop-app-container',
         trigger: ref.current,
         start: 'top top',
         end: 'bottom top',
@@ -80,13 +80,13 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
 
     return () => {
       ScrollTrigger.getAll().forEach((instance) => instance.kill());
-      gsap.killTweensOf('#app-container');
+      gsap.killTweensOf('#desktop-app-container');
     };
   }, []);
 
   return (
     <section ref={ref} className="section relative w-full h-full">
-      <div className="absolute h-full top-0 left-0 z-[2] w-1/3 bg-transparent">
+      <div className="absolute h-full top-0 left-0 z-[3] w-1/3 bg-transparent">
         <div className="relative h-screen">
           <p className="number absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
             {number}
@@ -100,7 +100,7 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
           </div>
         </div>
       </div>
-      <PhotoCurtain />
+      <DesktopPhotoCurtain />
       <Image
         className="-scale-x-100"
         src={imageUrl}
@@ -115,4 +115,4 @@ const RoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, tit
   );
 };
 
-export default RoomSection;
+export default DesktopRoomSection;
