@@ -63,7 +63,7 @@ const DesktopLandingPage = () => {
   }, []);
 
   return (
-    <div ref={ref} id="desktop-app-container" className="h-screen overflow-y-scroll">
+    <div ref={ref} id="desktop-app-container" className="h-screen">
       <DesktopNavbar />
       <DesktopTextSide />
       <DesktopRoomSection
@@ -100,7 +100,7 @@ const DesktopLandingPage = () => {
         sectionName={SectionOnScreen.kitchen}
         highlightedTextColor={SectionHighlightedTextColor.gray}
         pinsColor={SectionPinsColor.gray}
-        title="Modern"
+        title="Magic"
         imageUrl="/images/kitchen.jpg"
         blurImageUrl="/images/kitchen-blur.jpg"
       >
@@ -115,7 +115,7 @@ const DesktopLandingPage = () => {
         sectionName={SectionOnScreen.bedroom}
         highlightedTextColor={SectionHighlightedTextColor.beige}
         pinsColor={SectionPinsColor.beige}
-        title="Homely"
+        title="Comfy"
         imageUrl="/images/bedroom.jpg"
         blurImageUrl="/images/bedroom-blur.jpg"
       >

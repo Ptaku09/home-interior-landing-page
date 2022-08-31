@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const Home: NextPage = () => {
   const { width, ref: resizeRef } = useResizeDetector();
 
-  return <div ref={resizeRef}>{(width as number) > 1320 ? <DesktopLandingPage /> : <MobileLandingPage />}</div>;
+  return <div ref={resizeRef}>{(width as number) > 955 ? <DesktopLandingPage /> : <MobileLandingPage />}</div>;
 };
 
 export default Home;

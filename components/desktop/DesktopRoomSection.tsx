@@ -86,12 +86,12 @@ const DesktopRoomSection = ({ number, sectionName, highlightedTextColor, pinsCol
 
   return (
     <section ref={ref} className="section relative w-full h-full">
-      <div className="absolute h-full top-0 left-0 z-[3] w-1/3 bg-transparent">
+      <div className="absolute h-full top-0 left-0 z-[3] w-[calc(33.333333%+5rem)] bg-transparent">
         <div className="relative h-screen">
           <p className="number absolute top-1/2 -translate-y-1/2 -left-32 text-[30rem] cursor-default font-oswald font-semibold text-zinc-600 selection:bg-inherit">
             {number}
           </p>
-          <div className="h-full w-auto absolute top-1/2 -translate-y-1/2 -right-14 flex justify-center flex-col">
+          <div className="h-full w-full flex justify-center items-end flex-col ml-6 xl:ml-0 xl:pr-10">
             <div className="text flex justify-center flex-col gap-3">
               <h4 className={`${highlightedTextColor} font-oswald font-semibold`}>{sectionName.toUpperCase()}</h4>
               <h1 className="text-9xl text-right font-playfair text-gray-200 whitespace-nowrap">{title}</h1>

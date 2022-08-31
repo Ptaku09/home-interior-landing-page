@@ -2,6 +2,13 @@
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '955px',
+      xl: '1315px',
+      '2xl': '1536px',
+    },
     extend: {
       backgroundSize: {
         'size-200': '200% 200%',
