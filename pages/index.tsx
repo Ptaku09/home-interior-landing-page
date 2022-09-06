@@ -6,6 +6,7 @@ import React from 'react';
 import DesktopLandingPage from '../components/desktop/DesktopLandingPage';
 import { useResizeDetector } from 'react-resize-detector';
 import MobileLandingPage from '../components/mobile/MobileLandingPage';
+import { isBrowser } from 'react-device-detect';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
@@ -13,7 +14,7 @@ gsap.registerPlugin(ScrollToPlugin);
 const Home: NextPage = () => {
   const { width, ref: resizeRef } = useResizeDetector();
 
-  return <div ref={resizeRef}>{(width as number) > 955 ? <DesktopLandingPage /> : <MobileLandingPage />}</div>;
+  return <div ref={resizeRef}>{(width as number) > 955 && isBrowser ? <DesktopLandingPage /> : <MobileLandingPage />}</div>;
 };
 
 export default Home;

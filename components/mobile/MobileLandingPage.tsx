@@ -1,9 +1,14 @@
 import React from 'react';
+import { useResizeDetector } from 'react-resize-detector';
+import DesktopNavbar from '../desktop/DesktopNavbar';
+import MobileNavbar from './MobileNavbar';
 
 const MobileLandingPage = () => {
+  const { width, ref: resizeRef } = useResizeDetector();
+
   return (
-    <div className="h-full w-screen flex items-center justify-center">
-      <h1>MobileLandingPage</h1>
+    <div ref={resizeRef} className="relative h-full w-screen flex items-center justify-center">
+      {(width as number) > 955 ? <DesktopNavbar /> : <MobileNavbar />}
     </div>
   );
 };
