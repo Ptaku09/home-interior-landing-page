@@ -5,7 +5,7 @@ import MobileHamburger from './MobileHamburger';
 
 const MobileNavbar = () => {
   return (
-    <div className="w-screen h-16 grid grid-cols-[1fr_3fr_1fr] bg-zinc-700">
+    <div className="fixed z-10 top-0 w-screen h-16 grid grid-cols-[1fr_3fr_1fr] bg-zinc-700">
       <div className="flex items-center justify-center">
         <MobileHamburger />
       </div>

@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 import { throttle } from 'lodash';
 import DesktopNavbar from './DesktopNavbar';
-import DesktopRoomSection, { SectionHighlightedTextColor, SectionPinsColor } from './DesktopRoomSection';
+import DesktopRoomSection, { SectionHighlightedTextColor } from './DesktopRoomSection';
 import { SectionOnScreen } from '../../providers/SectionOnScreenProvider';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
@@ -70,7 +70,6 @@ const DesktopLandingPage = () => {
         number="01"
         sectionName={SectionOnScreen.livingRoom}
         highlightedTextColor={SectionHighlightedTextColor.yellow}
-        pinsColor={SectionPinsColor.yellow}
         title="Design"
         imageUrl="/images/living-room.jpg"
         blurImageUrl="/images/living-room-blur.jpg"
@@ -85,7 +84,6 @@ const DesktopLandingPage = () => {
         number="02"
         sectionName={SectionOnScreen.diningRoom}
         highlightedTextColor={SectionHighlightedTextColor.green}
-        pinsColor={SectionPinsColor.green}
         title="Stylish"
         imageUrl="/images/dining-room.jpg"
         blurImageUrl="/images/dining-room-blur.jpg"
@@ -99,7 +97,6 @@ const DesktopLandingPage = () => {
         number="03"
         sectionName={SectionOnScreen.kitchen}
         highlightedTextColor={SectionHighlightedTextColor.gray}
-        pinsColor={SectionPinsColor.gray}
         title="Magic"
         imageUrl="/images/kitchen.jpg"
         blurImageUrl="/images/kitchen-blur.jpg"
@@ -114,7 +111,6 @@ const DesktopLandingPage = () => {
         number="04"
         sectionName={SectionOnScreen.bedroom}
         highlightedTextColor={SectionHighlightedTextColor.beige}
-        pinsColor={SectionPinsColor.beige}
         title="Comfy"
         imageUrl="/images/bedroom.jpg"
         blurImageUrl="/images/bedroom-blur.jpg"
@@ -130,7 +126,6 @@ const DesktopLandingPage = () => {
         number="05"
         sectionName={SectionOnScreen.bathroom}
         highlightedTextColor={SectionHighlightedTextColor.stone}
-        pinsColor={SectionPinsColor.stone}
         title="Nature"
         imageUrl="/images/bathroom.jpg"
         blurImageUrl="/images/bathroom-blur.jpg"

@@ -15,32 +15,22 @@ export enum SectionHighlightedTextColor {
   stone = 'text-stone-400',
 }
 
-export enum SectionPinsColor {
-  yellow = 'bg-yellow-600',
-  green = 'bg-emerald-600',
-  gray = 'bg-stone-300',
-  beige = 'text-orange-200',
-  stone = 'bg-stone-500',
-}
-
 type Props = {
   number: string;
   sectionName: SectionOnScreen;
   highlightedTextColor: SectionHighlightedTextColor;
-  pinsColor: SectionPinsColor;
   title: string;
   imageUrl: string;
   blurImageUrl: string;
   children: ReactNode;
 };
 
-const DesktopRoomSection = ({ number, sectionName, highlightedTextColor, pinsColor, title, imageUrl, blurImageUrl, children }: Props) => {
+const DesktopRoomSection = ({ number, sectionName, highlightedTextColor, title, imageUrl, blurImageUrl, children }: Props) => {
   const { setSectionOnScreen } = useContext(SectionOnScreenContext);
   const ref = useRef<HTMLTableSectionElement | null>(null);
   const isVisible = useOnScreen(ref, '0px', 0.51);
   const gsapPointer = gsap.utils.selector(ref);
   const timelineNumberTop = useRef<gsap.core.Timeline | null>(null);
-  const timelineNumberBottom = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     isVisible && setSectionOnScreen(Object.values(SectionOnScreen)[Number(number) - 1]);
