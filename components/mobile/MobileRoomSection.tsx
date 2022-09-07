@@ -1,6 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useContext, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { SectionOnScreen } from '../../providers/SectionOnScreenProvider';
+import { SectionOnScreen, SectionOnScreenContext } from '../../providers/SectionOnScreenProvider';
+import useOnScreen from '../../hooks/useOnScreen';
+import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
+import gsap from 'gsap';
 
 export enum MobileSectionColor {
   yellow = 'bg-yellow-600',
@@ -11,6 +14,7 @@ export enum MobileSectionColor {
 }
 
 type Props = {
+  number: string;
   sectionName: SectionOnScreen;
   sectionColor: MobileSectionColor;
   title: string;
@@ -19,14 +23,73 @@ type Props = {
   children: ReactNode;
 };
 
-const MobileRoomSection = ({ sectionName, sectionColor, title, imageUrl, blurImageUrl, children }: Props) => {
+const MobileRoomSection = ({ number, sectionName, sectionColor, title, imageUrl, blurImageUrl, children }: Props) => {
+  const ref = useRef<HTMLTableSectionElement | null>(null);
+  const isVisible = useOnScreen(ref, '0px', 0.51);
+  const { setSectionOnScreen } = useContext(SectionOnScreenContext);
+  const gsapPointer = gsap.utils.selector(ref);
+
+  useEffect(() => {
+    isVisible && setSectionOnScreen(Object.values(SectionOnScreen)[Number(number) - 1]);
+  }, [isVisible, number, setSectionOnScreen]);
+
+  useIsomorphicLayoutEffect(() => {
+    const sectionName = gsapPointer('.section-name');
+    const title = gsapPointer('.title');
+    const text = gsapPointer('.text');
+
+    // add parallax effect to section name
+    gsap.to(sectionName, {
+      yPercent: -100,
+      ease: 'none',
+      scrollTrigger: {
+        scroller: 'body',
+        trigger: ref.current,
+        start: 'top 80%',
+        end: 'center center',
+        scrub: true,
+      },
+    });
+
+    // add parallax effect to text
+    gsap.to(text, {
+      yPercent: -30,
+      ease: 'none',
+      scrollTrigger: {
+        scroller: 'body',
+        trigger: ref.current,
+        start: '30% 80%',
+        end: 'bottom center',
+        scrub: true,
+      },
+    });
+
+    // add slide-in effect to title
+    gsap.fromTo(
+      title,
+      {
+        x: '100%',
+      },
+      {
+        x: '0%',
+        scrollTrigger: {
+          scroller: 'body',
+          trigger: ref.current,
+          start: 'top 80%',
+          end: '30% center',
+          scrub: 2,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="-mt-20">
-      <div className={`${sectionColor} w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-12 relative z-[1]`}>
-        <p className="text-4xl text-white font-oswald font-semibold">{sectionName}</p>
+    <section ref={ref} className="-mt-20 overflow-hidden">
+      <div className={`${sectionColor} section-name w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-32 relative z-[1] text-white`}>
+        <p className="text-4xl font-oswald font-semibold">{sectionName}</p>
       </div>
       <div className="relative w-screen">
-        <h2 className="absolute top-1/4 right-0 text-white z-[1] text-8xl font-playfair">{title}</h2>
+        <h2 className="title absolute top-1/4 right-5 text-white z-[1] text-8xl font-playfair">{title}</h2>
         <Image
           className="-scale-x-100"
           src={imageUrl}
@@ -40,10 +103,10 @@ const MobileRoomSection = ({ sectionName, sectionColor, title, imageUrl, blurIma
           priority
         />
       </div>
-      <div className="w-full h-auto bg-zinc-700 -translate-y-20 p-10">
-        <p className="text-xl text-white font-poppins">{children}</p>
+      <div className="text relative w-full h-auto bg-zinc-700 -translate-y-0 p-10 bg-opacity-70 overflow-hidden">
+        <p className="relative z-[1] text-xl text-white font-poppins">{children}</p>
       </div>
-    </div>
+    </section>
   );
 };
 

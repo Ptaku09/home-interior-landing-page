@@ -10,9 +10,10 @@ const MobileLandingPage = () => {
   const { width, ref: resizeRef } = useResizeDetector();
 
   return (
-    <div ref={resizeRef} className="relative h-auto w-screen pt-28 flex flex-col items-start">
+    <div ref={resizeRef} id="mobile-app-container" className="relative h-auto w-screen pt-28 flex flex-col items-start">
       {(width as number) > 955 ? <DesktopNavbar /> : <MobileNavbar />}
       <MobileRoomSection
+        number="01"
         sectionName={SectionOnScreen.livingRoom}
         sectionColor={MobileSectionColor.yellow}
         title="Design"
@@ -26,6 +27,7 @@ const MobileLandingPage = () => {
         </>
       </MobileRoomSection>
       <MobileRoomSection
+        number="02"
         sectionName={SectionOnScreen.diningRoom}
         sectionColor={MobileSectionColor.green}
         title="Stylish"
@@ -38,6 +40,7 @@ const MobileLandingPage = () => {
         </>
       </MobileRoomSection>
       <MobileRoomSection
+        number="03"
         sectionName={SectionOnScreen.kitchen}
         sectionColor={MobileSectionColor.gray}
         title="Magic"
@@ -51,6 +54,7 @@ const MobileLandingPage = () => {
         </>
       </MobileRoomSection>
       <MobileRoomSection
+        number="04"
         sectionName={SectionOnScreen.bedroom}
         sectionColor={MobileSectionColor.beige}
         title="Comfy"
@@ -65,6 +69,7 @@ const MobileLandingPage = () => {
         </>
       </MobileRoomSection>
       <MobileRoomSection
+        number="05"
         sectionName={SectionOnScreen.bathroom}
         sectionColor={MobileSectionColor.stone}
         title="Nature"
