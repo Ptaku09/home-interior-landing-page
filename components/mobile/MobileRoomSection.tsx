@@ -81,6 +81,10 @@ const MobileRoomSection = ({ number, sectionName, sectionColor, title, imageUrl,
         },
       }
     );
+
+    return () => {
+      gsap.killTweensOf('body');
+    };
   }, []);
 
   return (
