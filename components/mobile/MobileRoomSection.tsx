@@ -4,6 +4,7 @@ import { SectionOnScreen, SectionOnScreenContext } from '../../providers/Section
 import useOnScreen from '../../hooks/useOnScreen';
 import useIsomorphicLayoutEffect from '../../hooks/useIsomorphicLayoutEffect';
 import gsap from 'gsap';
+import _ from 'lodash';
 
 export enum MobileSectionColor {
   yellow = 'bg-yellow-600',
@@ -88,7 +89,8 @@ const MobileRoomSection = ({ number, sectionName, sectionColor, title, imageUrl,
   }, []);
 
   return (
-    <section ref={ref} className="-mt-20 overflow-hidden">
+    <section ref={ref} className="relative -mt-20 overflow-hidden">
+      <span id={_.kebabCase(sectionName)} className="absolute -top-4" />
       <div className={`${sectionColor} section-name w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-32 relative z-[1] text-white`}>
         <p className="text-4xl font-oswald font-semibold">{sectionName}</p>
       </div>
