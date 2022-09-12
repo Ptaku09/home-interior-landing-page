@@ -12,7 +12,7 @@ const MobileNavbar = () => {
       <div className="flex items-center justify-center">
         <p className="font-poppins text-white text-xl">Find your style</p>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="relative z-[1] flex items-center justify-center">
         <a href="https://github.com/Ptaku09" target="_blank" rel="noreferrer">
           <Image src={githubWhite} width={30} height={30} alt="github icon" />
         </a>

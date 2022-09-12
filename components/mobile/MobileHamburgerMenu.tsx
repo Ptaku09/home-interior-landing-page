@@ -52,7 +52,8 @@ const MobileHamburgerMenu = () => {
         />
       </div>
       <div className="menu-background w-screen h-screen absolute top-0 left-0 text-2xl bg-opacity-0 flex items-center justify-center flex-col gap-6">
-        <div className="w-full h-full mt-16 flex items-center justify-center flex-col gap-6 w-2/3" onClick={() => setIsOpen(false)}>
+        <div className="w-screen h-16 absolute top-0" /> {/* this is for auto-closing the menu when focus is lost, but keeps tiles centered */}
+        <div className="w-full h-full flex items-center justify-center flex-col gap-6 w-2/3" onClick={() => setIsOpen(false)}>
           {Object.values(SectionOnScreen).map((sectionName: string) => (
             <MobileMenuTile key={sectionName} sectionName={sectionName} />
           ))}

@@ -94,16 +94,14 @@ const MobileRoomSection = ({ number, sectionName, sectionColor, title, imageUrl,
       <div className={`${sectionColor} section-name w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-32 relative z-[1] text-white`}>
         <p className="text-4xl font-oswald font-semibold">{sectionName}</p>
       </div>
-      <div className="relative w-screen">
+      <div className="relative w-screen h-screen">
         <h2 className="title absolute top-1/4 right-5 text-white z-[1] text-8xl font-playfair">{title}</h2>
         <Image
           className="-scale-x-100"
           src={imageUrl}
-          layout="responsive"
+          layout="fill"
           objectFit="cover"
           alt="dining room"
-          width={1000}
-          height={2000}
           blurDataURL={blurImageUrl}
           placeholder="blur"
           priority
