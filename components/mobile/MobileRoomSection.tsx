@@ -111,36 +111,11 @@ const MobileRoomSection = ({
 
   return (
     <Device>
-      {({ isMobileOnly, isTablet }) => {
-        if (isMobileOnly)
-          return (
-            <section ref={ref} className="relative -mt-20 overflow-hidden">
-              <span id={_.kebabCase(sectionName)} className="absolute -top-4" />
-              <div className={`${sectionColor} section-name w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-32 relative z-[1] text-white`}>
-                <p className="text-4xl font-oswald font-semibold">{sectionName}</p>
-              </div>
-              <div className="relative w-screen h-screen">
-                <h2 className="title absolute top-1/4 right-5 text-white z-[1] text-8xl font-playfair">{title}</h2>
-                <Image
-                  className="-scale-x-100"
-                  src={imageUrl}
-                  layout="fill"
-                  objectFit="cover"
-                  alt="dining room"
-                  blurDataURL={blurImageUrl}
-                  placeholder="blur"
-                  priority
-                />
-              </div>
-              <div className="text relative w-full h-auto bg-zinc-700 -translate-y-0 p-10 bg-opacity-70 overflow-hidden">
-                <p className="relative z-[1] text-xl text-white font-poppins">{children}</p>
-              </div>
-            </section>
-          );
-        else if (isTablet) {
+      {({ isTablet }) => {
+        if (isTablet) {
           return (
             <section ref={ref} className="relative overflow-hidden border-b-8">
-              <span id={_.kebabCase(sectionName)} className="absolute -top-4" />
+              <span id={_.kebabCase(sectionName)} className="absolute -top-4 lg:top-0" />
               <div className={`${sectionColorBackground} section-name absolute top-52 w-5/6 h-36 flex items-center px-10 z-[1] text-white`}>
                 <p className="text-5xl font-oswald font-semibold">{sectionName}</p>
               </div>
@@ -165,6 +140,31 @@ const MobileRoomSection = ({
             </section>
           );
         }
+
+        return (
+          <section ref={ref} className="relative -mt-20 overflow-hidden">
+            <span id={_.kebabCase(sectionName)} className="absolute -top-4" />
+            <div className={`${sectionColor} section-name w-5/6 xs:w-2/3 h-24 flex items-center px-10 translate-y-32 relative z-[1] text-white`}>
+              <p className="text-4xl font-oswald font-semibold">{sectionName}</p>
+            </div>
+            <div className="relative w-screen h-screen">
+              <h2 className="title absolute top-1/4 right-5 text-white z-[1] text-8xl font-playfair">{title}</h2>
+              <Image
+                className="-scale-x-100"
+                src={imageUrl}
+                layout="fill"
+                objectFit="cover"
+                alt="dining room"
+                blurDataURL={blurImageUrl}
+                placeholder="blur"
+                priority
+              />
+            </div>
+            <div className="text relative w-full h-auto bg-zinc-700 -translate-y-0 p-10 bg-opacity-70 overflow-hidden">
+              <p className="relative z-[1] text-xl text-white font-poppins">{children}</p>
+            </div>
+          </section>
+        );
       }}
     </Device>
   );
