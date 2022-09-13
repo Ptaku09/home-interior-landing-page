@@ -3,8 +3,7 @@ import MobileNavbar from '../mobile/MobileNavbar';
 import { useResizeDetector } from 'react-resize-detector';
 import { SectionOnScreen } from '../../providers/SectionOnScreenProvider';
 import { SectionHighlightedTextColor } from '../desktop/DesktopRoomSection';
-import TabletRoomSection, { SectionBorderColor } from './TabletRoomSection';
-import { SectionBackgroundColor } from '../mobile/MobileRoomSection';
+import MobileRoomSection, { SectionBackgroundColor, SectionBorderColor } from '../mobile/MobileRoomSection';
 import TabletNavbar from './TabletNavbar';
 
 const TabletLandingPage = () => {
@@ -13,7 +12,7 @@ const TabletLandingPage = () => {
   return (
     <div ref={resizeRef} id="tablet-app-container" className="relative pt-8 lg:pt-0 h-auto w-screen flex flex-col items-start">
       {(width as number) > 955 ? <TabletNavbar /> : <MobileNavbar />}
-      <TabletRoomSection
+      <MobileRoomSection
         number="01"
         sectionName={SectionOnScreen.livingRoom}
         sectionColorBackground={SectionBackgroundColor.yellow}
@@ -27,8 +26,8 @@ const TabletLandingPage = () => {
           <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}>contrast</span> and nature to room. Accessories such as sculpture or
           clock <span className={`${SectionHighlightedTextColor.yellow} font-semibold`}>breaks the monotony</span>.
         </>
-      </TabletRoomSection>
-      <TabletRoomSection
+      </MobileRoomSection>
+      <MobileRoomSection
         number="02"
         sectionName={SectionOnScreen.diningRoom}
         sectionColorBackground={SectionBackgroundColor.green}
@@ -41,8 +40,8 @@ const TabletLandingPage = () => {
           Emerald green chairs play well with golden and black elements. Mirror adds some visual space to the room. Carpet makes it more{' '}
           <span className={`${SectionHighlightedTextColor.green} font-semibold`}>comfortable and cosy</span>.
         </>
-      </TabletRoomSection>
-      <TabletRoomSection
+      </MobileRoomSection>
+      <MobileRoomSection
         number="03"
         sectionName={SectionOnScreen.kitchen}
         sectionColorBackground={SectionBackgroundColor.gray}
@@ -56,8 +55,8 @@ const TabletLandingPage = () => {
           worktop next to the window is <span className={`${SectionHighlightedTextColor.gray} font-semibold`}>very practical</span>. Fresh spices
           hanging over the table give the place an table magical atmosphere.
         </>
-      </TabletRoomSection>
-      <TabletRoomSection
+      </MobileRoomSection>
+      <MobileRoomSection
         number="04"
         sectionName={SectionOnScreen.bedroom}
         sectionColorBackground={SectionBackgroundColor.beige}
@@ -72,8 +71,8 @@ const TabletLandingPage = () => {
           <span className={`${SectionHighlightedTextColor.beige} font-semibold`}>King-size bed</span> guarantees great sleep and the whole thing is
           due to large window that lets sunlight into the room.
         </>
-      </TabletRoomSection>
-      <TabletRoomSection
+      </MobileRoomSection>
+      <MobileRoomSection
         number="05"
         sectionName={SectionOnScreen.bathroom}
         sectionColorBackground={SectionBackgroundColor.stone}
@@ -87,7 +86,7 @@ const TabletLandingPage = () => {
           use of stone, the room does not look ascetic. Rain shower between real trees gives the impression of showering{' '}
           <span className={`${SectionHighlightedTextColor.stone} font-semibold`}>in the wild</span>.
         </>
-      </TabletRoomSection>
+      </MobileRoomSection>
     </div>
   );
 };

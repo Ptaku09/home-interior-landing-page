@@ -18,10 +18,11 @@ const Home: NextPage = () => {
   return (
     <div ref={resizeRef}>
       <Device>
-        {(isBrowser, isMobileOnly) => {
-          if ((width as number) > 955 && isBrowser) return <DesktopLandingPage />;
-          if ((width as number) < 500 || isMobileOnly) return <MobileLandingPage />;
-          return <TabletLandingPage />;
+        {({ isBrowser, isMobileOnly, isTablet }) => {
+          if (isBrowser && (width as number) > 955) return <DesktopLandingPage />;
+          if (isMobileOnly || (width as number) < 500) return <MobileLandingPage />;
+          if (isTablet) return <TabletLandingPage />;
+          return <DesktopLandingPage />;
         }}
       </Device>
     </div>
