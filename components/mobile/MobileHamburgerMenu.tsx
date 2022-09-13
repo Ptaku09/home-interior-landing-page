@@ -34,6 +34,10 @@ const MobileHamburgerMenu = () => {
 
       unlockScroll();
     }
+
+    return () => {
+      menuTimeline.current?.kill();
+    };
   }, [isOpen]);
 
   return (

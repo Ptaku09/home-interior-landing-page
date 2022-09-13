@@ -1,21 +1,21 @@
 import React from 'react';
 import { useResizeDetector } from 'react-resize-detector';
-import MobileRoomSection, { MobileSectionColor } from './MobileRoomSection';
+import MobileRoomSection, { SectionBackgroundColor } from './MobileRoomSection';
 import { SectionOnScreen } from '../../providers/SectionOnScreenProvider';
 import { SectionHighlightedTextColor } from '../desktop/DesktopRoomSection';
-import DesktopNavbar from '../desktop/DesktopNavbar';
 import MobileNavbar from './MobileNavbar';
+import TabletNavbar from '../tablet/TabletNavbar';
 
 const MobileLandingPage = () => {
   const { width, ref: resizeRef } = useResizeDetector();
 
   return (
     <div ref={resizeRef} id="mobile-app-container" className="relative h-auto w-screen pt-28 flex flex-col items-start">
-      {(width as number) > 955 ? <DesktopNavbar /> : <MobileNavbar />}
+      {(width as number) > 955 ? <TabletNavbar /> : <MobileNavbar />}
       <MobileRoomSection
         number="01"
         sectionName={SectionOnScreen.livingRoom}
-        sectionColor={MobileSectionColor.yellow}
+        sectionColor={SectionBackgroundColor.yellow}
         title="Design"
         imageUrl="/images/living-room.jpg"
         blurImageUrl="/images/living-room-blur.jpg"
@@ -29,7 +29,7 @@ const MobileLandingPage = () => {
       <MobileRoomSection
         number="02"
         sectionName={SectionOnScreen.diningRoom}
-        sectionColor={MobileSectionColor.green}
+        sectionColor={SectionBackgroundColor.green}
         title="Stylish"
         imageUrl="/images/dining-room.jpg"
         blurImageUrl="/images/dining-room-blur.jpg"
@@ -42,7 +42,7 @@ const MobileLandingPage = () => {
       <MobileRoomSection
         number="03"
         sectionName={SectionOnScreen.kitchen}
-        sectionColor={MobileSectionColor.gray}
+        sectionColor={SectionBackgroundColor.gray}
         title="Magic"
         imageUrl="/images/kitchen.jpg"
         blurImageUrl="/images/kitchen-blur.jpg"
@@ -56,7 +56,7 @@ const MobileLandingPage = () => {
       <MobileRoomSection
         number="04"
         sectionName={SectionOnScreen.bedroom}
-        sectionColor={MobileSectionColor.beige}
+        sectionColor={SectionBackgroundColor.beige}
         title="Comfy"
         imageUrl="/images/bedroom.jpg"
         blurImageUrl="/images/bedroom-blur.jpg"
@@ -71,7 +71,7 @@ const MobileLandingPage = () => {
       <MobileRoomSection
         number="05"
         sectionName={SectionOnScreen.bathroom}
-        sectionColor={MobileSectionColor.stone}
+        sectionColor={SectionBackgroundColor.stone}
         title="Nature"
         imageUrl="/images/bathroom.jpg"
         blurImageUrl="/images/bathroom-blur.jpg"
