@@ -1,18 +1,8 @@
 import SectionOnScreenProvider from '../providers/SectionOnScreenProvider';
 import React, { FC, ReactElement, ReactNode } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
-
-window.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
-
-window.IntersectionObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+import './../__mocks__/resizeObserverMock';
+import './../__mocks__/intersectionObserverMock';
 
 const AllTheProviders: FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
   return <SectionOnScreenProvider>{children}</SectionOnScreenProvider>;

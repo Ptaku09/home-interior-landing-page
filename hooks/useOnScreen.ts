@@ -20,7 +20,7 @@ const useOnScreen: UseOnScreenType = <T extends HTMLElement | null>(ref: Mutable
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [ref, rootMargin, threshold]);
 
   return isIntersecting;
 };
