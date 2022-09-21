@@ -10,7 +10,12 @@ const TabletLandingPage = () => {
   const { width, ref: resizeRef } = useResizeDetector();
 
   return (
-    <div ref={resizeRef} id="tablet-app-container" className="relative pt-8 lg:pt-0 h-auto w-screen flex flex-col items-start">
+    <div
+      ref={resizeRef}
+      data-cy="tablet-landing-page"
+      id="tablet-app-container"
+      className="relative pt-8 lg:pt-0 h-auto w-screen flex flex-col items-start"
+    >
       {(width as number) > 955 ? <TabletNavbar /> : <MobileNavbar />}
       <MobileRoomSection
         number="01"

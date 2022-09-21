@@ -9,10 +9,12 @@ exports[`Mobile landing page component should render 1`] = `
     <div>
       <div
         class="relative h-auto w-screen pt-28 flex flex-col items-start"
+        data-cy="mobile-landing-page"
         id="mobile-app-container"
       >
         <div
           class="fixed z-10 top-0 w-screen h-16 grid grid-cols-[1fr_3fr_1fr] bg-zinc-700"
+          data-cy="mobile-navbar"
         >
           <div
             class="relative z-[1] flex items-center justify-center"
@@ -28,6 +30,7 @@ exports[`Mobile landing page component should render 1`] = `
                 />
                 <label
                   class="absolute h-1 w-7 bg-white duration-200 before:transition-all before:bg-white before:h-1 before:w-7 before:absolute before:-mt-2 after:transition-all after:bg-white after:h-1 after:w-7 after:absolute after:mt-2 peer-checked:bg-transparent peer-checked:before:rotate-45 peer-checked:before:bg-stone-500 before:origin-[1px] peer-checked:after:-rotate-45 peer-checked:after:bg-stone-500 after:origin-[1px] peer-checked:after:translate-y-0.5"
+                  data-cy="hamburger-menu"
                   for="hamburger-menu"
                 />
               </div>
@@ -40,6 +43,7 @@ exports[`Mobile landing page component should render 1`] = `
                  
                 <div
                   class="w-full h-full flex items-center justify-center flex-col gap-6 w-2/3"
+                  data-cy="hamburger-menu-content"
                 >
                   <a
                     class="text w-2/3 py-4 -translate-x-[30rem] bg-stone-500 shadow-xl text-center text-white font-playfair bg-gradient-to-tr from-stone-600 to-stone-800"
@@ -123,10 +127,12 @@ exports[`Mobile landing page component should render 1`] = `
   "container": <div>
     <div
       class="relative h-auto w-screen pt-28 flex flex-col items-start"
+      data-cy="mobile-landing-page"
       id="mobile-app-container"
     >
       <div
         class="fixed z-10 top-0 w-screen h-16 grid grid-cols-[1fr_3fr_1fr] bg-zinc-700"
+        data-cy="mobile-navbar"
       >
         <div
           class="relative z-[1] flex items-center justify-center"
@@ -142,6 +148,7 @@ exports[`Mobile landing page component should render 1`] = `
               />
               <label
                 class="absolute h-1 w-7 bg-white duration-200 before:transition-all before:bg-white before:h-1 before:w-7 before:absolute before:-mt-2 after:transition-all after:bg-white after:h-1 after:w-7 after:absolute after:mt-2 peer-checked:bg-transparent peer-checked:before:rotate-45 peer-checked:before:bg-stone-500 before:origin-[1px] peer-checked:after:-rotate-45 peer-checked:after:bg-stone-500 after:origin-[1px] peer-checked:after:translate-y-0.5"
+                data-cy="hamburger-menu"
                 for="hamburger-menu"
               />
             </div>
@@ -154,6 +161,7 @@ exports[`Mobile landing page component should render 1`] = `
                
               <div
                 class="w-full h-full flex items-center justify-center flex-col gap-6 w-2/3"
+                data-cy="hamburger-menu-content"
               >
                 <a
                   class="text w-2/3 py-4 -translate-x-[30rem] bg-stone-500 shadow-xl text-center text-white font-playfair bg-gradient-to-tr from-stone-600 to-stone-800"

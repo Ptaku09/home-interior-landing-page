@@ -1,6 +1,6 @@
 {
-  "extends": ["plugin:prettier/recommended", "plugin:react-hooks/recommended", "plugin:react/recommended", "prettier", "next/core-web-vitals"],
-  "plugins": ["prettier"],
+  "extends": ["plugin:prettier/recommended", "plugin:cypress/recommended", "plugin:react-hooks/recommended", "plugin:react/recommended", "prettier", "next/core-web-vitals"],
+  "plugins": ["prettier", "cypress"],
   "rules": {
     "prettier/prettier": [
       "error",

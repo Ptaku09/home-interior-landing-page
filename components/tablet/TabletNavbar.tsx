@@ -8,7 +8,10 @@ const TabletNavbar = () => {
   const { sectionOnScreen } = useContext(SectionOnScreenContext);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-10 w-11/12 h-24 flex items-center justify-center px-10 font-poppins text-white bg-zinc-800">
+    <nav
+      data-cy="tablet-navbar"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-10 w-11/12 h-24 flex items-center justify-center px-10 font-poppins text-white bg-zinc-800"
+    >
       <div className="flex items-center justify-center flex-row gap-5">
         <ul className="flex items-center flex-row gap-5">
           {Object.values(SectionOnScreen).map((item: string) => (

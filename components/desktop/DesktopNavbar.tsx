@@ -7,7 +7,10 @@ const DesktopNavbar = () => {
   const { sectionOnScreen } = useContext(SectionOnScreenContext);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-10 w-11/12 h-24 flex items-center justify-center xl:grid xl:grid-cols-[200px_1fr_200px] px-10 font-poppins text-white bg-zinc-800">
+    <nav
+      data-cy="desktop-navbar"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-10 w-11/12 h-24 flex items-center justify-center xl:grid xl:grid-cols-[200px_1fr_200px] px-10 font-poppins text-white bg-zinc-800"
+    >
       <div className="hidden xl:flex items-center justify-center">
         <p className="font-semibold text-xl">Find your style</p>
       </div>

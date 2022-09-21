@@ -51,13 +51,18 @@ const MobileHamburgerMenu = () => {
           onChange={() => setIsOpen((prevState: boolean) => !prevState)}
         />
         <label
+          data-cy="hamburger-menu"
           htmlFor="hamburger-menu"
           className="absolute h-1 w-7 bg-white duration-200 before:transition-all before:bg-white before:h-1 before:w-7 before:absolute before:-mt-2 after:transition-all after:bg-white after:h-1 after:w-7 after:absolute after:mt-2 peer-checked:bg-transparent peer-checked:before:rotate-45 peer-checked:before:bg-stone-500 before:origin-[1px] peer-checked:after:-rotate-45 peer-checked:after:bg-stone-500 after:origin-[1px] peer-checked:after:translate-y-0.5"
         />
       </div>
       <div className="menu-background w-screen h-screen absolute top-0 left-0 text-2xl bg-opacity-0 flex items-center justify-center flex-col gap-6">
         <div className="w-screen h-16 absolute top-0" /> {/* this is for auto-closing the menu when focus is lost, but keeps tiles centered */}
-        <div className="w-full h-full flex items-center justify-center flex-col gap-6 w-2/3" onClick={() => setIsOpen(false)}>
+        <div
+          data-cy="hamburger-menu-content"
+          className="w-full h-full flex items-center justify-center flex-col gap-6 w-2/3"
+          onClick={() => setIsOpen(false)}
+        >
           {Object.values(SectionOnScreen).map((sectionName: string) => (
             <MobileMenuTile key={sectionName} sectionName={sectionName} />
           ))}
